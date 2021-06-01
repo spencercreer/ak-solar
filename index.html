@@ -9,71 +9,139 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/style/style.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            // https://dashboard.emailjs.com/admin/integration
+            emailjs.init('user_FV4fCPfLfkyufi2GtjyrI');
+        })();
+    </script>
+    <script type="text/javascript">
+        window.onload = function () {
+            document.getElementById('contact-form').addEventListener('submit', function (event) {
+                event.preventDefault();
+                // generate a five digit number for the contact_number variable
+                this.contact_number.value = Math.random() * 100000 | 0;
+                // these IDs from the previous steps
+                emailjs.sendForm('service_zwxq2o3', 'template_jqv79ah', this)
+                    .then(function () {
+                        console.log('SUCCESS!');
+                        alert("Your request has been submitted. We will contact you soon.");
+                    }, function (error) {
+                        console.log('FAILED...', error);
+                        alert("OOPS! Something went wrong.");
+                    });
+            });
+        }
+    </script>
 </head>
 
 <body>
-<div class="sticky-top">
-    <div  class="eks-navbar-head">
-        <a class="eks-nav-logo navbar-brand" href="#"><img class="img-fluid" src="./assets/img/transparent_logo.png"></a>
-        <a class="quote-nav text-light">Contact us for a Free Quote</a>
+    <div class="sticky-top">
+        <div class="eks-navbar-head">
+            <a class="tel-nav" href="tel:833-407-6527">833-40-SOLAR</a>
+        </div>
+        <nav class="eks-navbar navbar px-0">
+            <a class="navbar-brand mx-3" href="#"><img src="./assets/img/TRANSPARENT_LOGO.png"
+                    class="eks-nav-logo" /></a>
+            <a class="quote-nav text-light" href="#contact">Request Free Quote</a>
+        </nav>
     </div>
-        <nav class="eks-navbar navbar navbar-expand-lg">
-            <a class="eks-nav-logo navbar-brand" href="#"></a>
-            <button class="navbar-toggler eks-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon logo"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link text-light" href="#">Why 8k?<span class="sr-only">(current)</span></a>
+
+    <div class="jumbotron jumbotron-fluid py-4 mb-4">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="display-4">Solar installed on your home for $8000</h1>
+                <img class="eks-logo mb-4 mt-0" src="./assets/img/TRANSPARENT_LOGO.png" />
+                <p class="lead px-3" style="font-size: 5vh;">How much did your neighbor pay for solar?</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-5 px-4">
+            <ul>
+                <li class="lead mb-2" style="font-size: 3vh;">$0 DOWN</li>
+                <li class="lead mb-2" style="font-size: 3vh;">Monthly payments LESS THAN you currently pay for electricity
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Solar Financing</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Solar Benefits</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Installs Gallery</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Testimonials</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">FAQ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">News</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-light" href="#">Contact</a>
-                </li>
+                <li class="lead mb-2" style="font-size: 3vh;">Emergency power supply</li>
+                <li class="lead mb-2" style="font-size: 3vh;">Get your solar system for only $8,000</li>
             </ul>
         </div>
-    </nav>        
-</div>
-    <div class="eks-head">
-        <img class="img-fluid" src="./assets/img/logo_3d_mockup.jpg">
-    </div>
-    <div class="eks-logo">
-        8KSolar
-    </div>
-    <div class="jumbotron jumbotron-fluid">
-        <div>
+        <div class="col-md-7 px-5">
+            <img class="img-fluid" src="./assets/img/solar_install.jpg" />
         </div>
-        <div class="container">
-          <h1 class="display-4">Fluid jumbotron</h1>
-          <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+    </div>
+
+    <div class="row mt-4 mx-0 contact-form">
+        <div class="col-md-6 py-4 px-5">
+            <p class="lead" style="font-size: 4vh;">Serving Solar Across the Country</p>
+            <p class="lead">We serve customers in Arizona, Colorado, Idaho, North Carolina, South Carolina, Texas, and Utah. Contact us today to learn more about the incentives you can recieve in these individual states!
+            </p>
+            <img class="img-fluid" src="./assets/img/New-Star-Solar-Locations-Map-3.png" />
         </div>
-      </div>
-    <main>
 
-    </main>
-    <footer>
+        <div id="contact" class="col-md-6 pt-3 px-0">
+            <form id="contact-form" class="py-3 px-5">
+                <p class="lead" style="font-size: 4vh;">Get Your Free Quote</p>
+                <input type="hidden" name="contact_number">
+                <div class="form-row">
+                    <div class="form-group col-6">
+                        <label for="fistName">First Name</label>
+                        <input type="text" class="form-control" id="firstName" name="firstName">
+                    </div>
+                    <div class="form-group col-6">
+                        <label for="lastName">Last Name</label>
+                        <input type="text" class="form-control" id="lastName" name="lastName">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" class="form-control" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="address">Address</label>
+                    <input type="text" class="form-control" id="address" name="address">
+                </div>
+                <div class="form-row">
+                    <div class="form-group col-md-6">
+                        <label for="city">City</label>
+                        <input type="text" class="form-control" id="city" name="city">
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="state">State</label>
+                        <select id="state" name="state" class="form-control">
+                            <option selected>Choose...</option>
+                            <option>...</option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-2">
+                        <label for="zip">Zip</label>
+                        <input type="text" class="form-control" id="zip" name="zip">
+                    </div>
+                </div>
+                <button type="submit" class="btn eks-btn text-light">Submit Request</button>
+            </form>
+        </div>
+    </div>
 
+    <footer class="footer mt-auto">
+        <div class="container py-1">
+            <div class="row mt-3">
+                <div class="col-md-5 offset-md-1">
+                    <span class="text-muted">© 2021 8K Solar All Rights Reserved.</span>
+                </div>
+                <div class="col-md-6 text-center mt-2">
+                    <img class="img-fluid" src="assets/img/bbb-90014576.png" />
+                </div>
+            </div>
+        </div>
     </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
